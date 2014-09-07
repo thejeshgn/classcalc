@@ -72,44 +72,48 @@
 
         <div class="container">
             <div class="page-header">
-                <div class="page-header">
-                  <h1>Class Calculator <small>Are you really middle class?</small></h1>
-                </div>
-
-                <h3>To know select how much you spend on?</h3>
-                <p class="bg-primary">(per month per person)</p>
-            </div>          
-            <div class="row"><div class=".col-md-2">&nbsp;</div><div class=".col-md-8">
+              <h1>Class Calculator <small>Are you really middle class?</small></h1>
+              <p>The Class Calculator lets you figure out where what Indian income class you are in, based on your monthly expenditure</p>
+            </div>
+            <div class="row">
+                <div class=".col-md-4">&nbsp;</div>
+                <div class=".col-md-6">
                 
+                            <div class="alert alert-warning" role="alert" id="results">
+                              <button type="button" class="close"><span onclick="hideMsg()" class="sr-only">Close</span></button>
+                              <div id="result_text"></div>
+                            </div>
 
+                                <h3>To know select how much you spend on?</h3>
+                                <p>(per month per person in ₹ )</p>
                             <div class="table-responsive">
                                 <table class="table table-hover"  border=0>
                                 <tr>
-                                    <td width="25%">Eating out</td>
+                                    <td width="25%"><h4>Eating out</h4></td>
                                     <td width="40%"><div length="90%" id="h-slider1" class="primary"></div></td>
                                     <td width="1%">₹</td><td width="5%"><input id="h-slider1-amount" value="" readonly style="width:50px;" /></td>
                                     <td width="30%">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td width="25%">Travel (incl. fuel on travel)</td>
+                                    <td width="25%"><h4>Travel (incl. fuel on travel)</h4></td>
                                     <td width="40%"><div length="90%" id="h-slider2" class="primary"></div></td>
                                     <td width="1%">₹</td><td width="5%"><input id="h-slider2-amount" value="" readonly style="width:50px;" /></td>
                                     <td width="30%">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td width="25%">Electricity</td>
+                                    <td width="25%"><h4>Electricity</h4></td>
                                     <td width="40%"><div length="90%" id="h-slider3" class="primary"></div></td>
                                     <td width="1%">₹</td><td width="5%"><input id="h-slider3-amount" value="" readonly style="width:50px;" /></td>
                                     <td width="30%">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td width="25%">Alcohol</td>
+                                    <td width="25%"><h4>Alcohol</h4></td>
                                     <td width="40%"><div length="90%" id="h-slider4" class="primary"></div></td>
                                     <td width="1%">₹</td><td width="5%"><input id="h-slider4-amount" value="" readonly style="width:50px;" /></td>
                                     <td width="30%">&nbsp;</td>
                                 </tr>                                
                                 <tr>
-                                    <td width="25%">Movie Tickets</td>
+                                    <td width="25%"><h4>Movie Tickets</h4></td>
                                     <td width="40%"><div length="90%" id="h-slider5" class="primary"></div></td>
                                     <td width="1%">₹</td><td width="5%"><input id="h-slider5-amount" value="" readonly style="width:50px;" /></td>
                                     <td width="30%">&nbsp;</td>
@@ -124,21 +128,6 @@
                     
                
             </div>
-            <div class="row" id="results_row" >
-                <section id="results">
-                    <div class="page-header">
-                            <h2>Results</h2>
-                            <div id="result_text">You are </div>
-                    </div>
-                </section>
-            </div>
-            <div class="row">
-            <section id="about">
-                <div class="page-header">
-                        <h2>About</h2>
-                </div>
-            </section>
-            </div>
 
 
 
@@ -152,7 +141,7 @@
 <footer class="footer">
     <div class="container">
         <ul class="footer-links">
-            <li><a href="http://addyosmani.com/blog/">Data</a></li>
+            <li><a href="#">Credits</a></li>
             <li class="muted">&middot;</li>
             <li> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a></li>
         </ul>
@@ -207,7 +196,7 @@ $('#h-slider5').slider({
     } 
 });
 
-$("#results_row").hide();
+$("#results").hide();
 
 //eating, travel, ecity, alchol
 var majorArray = [[0,305,451,558,2050],[0,80,142,195,522],[0,60,84,99,187],[0,511,560,709,1000],[0,30,40,55,117]];
@@ -227,6 +216,9 @@ function whichSection(val, cat){
     }
     return 4;
 
+}
+function hideMsg(){
+    $("#results").hide("slow");
 }
 
 function caluculate(){
@@ -250,9 +242,15 @@ function caluculate(){
         social_class="Super Rich";
     }
     //alert(social_class);
-    msg = "You belong to "+social_class;
+    msg = "<h1>You are "+social_class+"</h1>";
     $("#result_text").html(msg);
-    $("#results_row").show();
+    $("#results").show("slow");
+
+$(document).ready(function(){
+        $('html,body').animate({scrollTop: $(this).offset().top}, 800);
+});  
+
+
 }
 
 </script>
