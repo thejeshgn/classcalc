@@ -1,3 +1,202 @@
-<html>
-Classic Calculator
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <title>jQuery UI Bootstrap</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="description" content="Class Calculator">
+            <meta name="author" content="Thejesh GN">
+            <script src="jquery-1.11.1.min.js"></script>
+            <!-- Le styles -->
+            <link href="ui/assets/css/bootstrap.min.css" rel="stylesheet">
+            <link type="text/css" href="ui/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+            <link type="text/css" href="ui/assets/css/font-awesome.min.css" rel="stylesheet" />
+            <!--[if IE 7]>
+            <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+            <![endif]-->
+            <!--[if lt IE 9]>
+            <link rel="stylesheet" type="text/css" href="css/custom-theme/jquery.ui.1.10.0.ie.css"/>
+            <![endif]-->
+            <link href="ui/assets/css/docs.css" rel="stylesheet">
+            <link href="ui/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+            <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+            <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+
+            <!-- Le fav and touch icons -->
+            <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+            <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+            <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+            <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+            <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+        </head>
+
+        <body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
+
+        <!-- Navbar
+        ================================================== -->
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="http://thejeshgn.github.io/classcalc/">Class Calculator</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="http://thejeshgn.github.io/classcalc/">Home</a>
+                            </li>
+                            <li>
+                                <a href="#about">About</a>
+                            </li>
+                        </ul>
+                        <div id="twitter-share" class="pull-right">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://thejeshgn.github.io/classcalc/" data-text="A new jQuery UI Bootstrap theme" data-via="addyosmani" data-size="large">Tweet</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Subhead
+        ================================================== -->
+
+
+        <div class="container">
+            <div class="page-header">
+                <h2>How much do you spend on?</h2>
+            </div>
+            <div class="row"><div class=".col-md-2">&nbsp;</div><div class=".col-md-8">
+                
+
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                <tr>
+                                    <td width="25%">Eating out</td>
+                                    <td width="40%"><div length="90%" id="h-slider1" class="primary"></div></td>
+                                    <td width="5%"><input id="h-slider1-amount" value="" readonly style="width:50px;" /></td>
+                                    <td width="30%">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td width="25%">Travel (incl. fuel on travel)</td>
+                                    <td width="40%"><div length="90%" id="h-slider2" class="primary"></div></td>
+                                    <td width="5%"><input id="h-slider2-amount" value="" readonly style="width:50px;" /></td>
+                                    <td width="30%">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td width="25%">Electricity</td>
+                                    <td width="40%"><div length="90%" id="h-slider3" class="primary"></div></td>
+                                    <td width="5%"><input id="h-slider3-amount" value="" readonly style="width:50px;" /></td>
+                                    <td width="30%">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td width="25%">Alcohol</td>
+                                    <td width="40%"><div length="90%" id="h-slider4" class="primary"></div></td>
+                                    <td width="5%"><input id="h-slider4-amount" value="" readonly style="width:50px;" /></td>
+                                    <td width="30%">&nbsp;</td>
+                                </tr>                                
+                                <tr>
+                                    <td width="25%">Movie Tickets</td>
+                                    <td width="40%"><div length="90%" id="h-slider5" class="primary"></div></td>
+                                    <td width="5%"><input id="h-slider5-amount" value="" readonly style="width:50px;" /></td>
+                                    <td width="30%">&nbsp;</td>
+                                </tr>  
+                                <tr>
+                                    <td colspan="3"><center><button type="button" class="btn btn-success">Find out your class</button></center></td><td width="60%">&nbsp;</td>
+                                </tr>
+                                </table>
+                            </div>
+                    </div>          
+                    <div class=".col-md-2">&nbsp;</div>
+                    
+               
+            </div>
+            <div class="row" id="results_row">
+                <section id="results">
+                    <div class="page-header">
+                            <h2>Results</h2>
+                    </div>
+                </section>
+            </div>
+            <div class="row">
+            <section id="about">
+                <div class="page-header">
+                        <h2>About</h2>
+                </div>
+            </section>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <ul class="footer-links">
+            <li><a href="http://addyosmani.com/blog/">Data</a></li>
+            <li class="muted">&middot;</li>
+            <li> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a></li>
+        </ul>
+    </div>
+</footer>
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="ui/assets/js/jquery-1.9.0.min.js" type="text/javascript"></script>
+<script src="ui/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="ui/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
+<script src="ui/assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>
+<script src="ui/assets/js/docs.js" type="text/javascript"></script>
+<script>
+$('#h-slider1').slider({
+    range: false,
+    values: [0, 10000],
+    slide: function (event, ui){
+        $("#h-slider1-amount").val(ui.value);
+    } 
+});
+$('#h-slider2').slider({
+    range: false,
+    values: [0, 10000],
+    slide: function (event, ui){
+        $("#h-slider2-amount").val(ui.value);
+    } 
+
+});
+$('#h-slider3').slider({
+    range: false,
+    values: [0, 10000],
+    slide: function (event, ui){
+        $("#h-slider3-amount").val(ui.value);
+    } 
+});
+$('#h-slider4').slider({
+    range: false,
+    values: [0, 10000],
+    slide: function (event, ui){
+        $("#h-slider4-amount").val(ui.value);
+    } 
+});
+$('#h-slider5').slider({
+    range: false,
+    values: [0, 10000],
+    slide: function (event, ui){
+        $("#h-slider5-amount").val(ui.value);
+    } 
+});
+//$("#h-slider1-amount").val($("#h-slider1").slider("value"));
+</script>
+
+</body>
 </html>
