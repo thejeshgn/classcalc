@@ -72,45 +72,50 @@
 
         <div class="container">
             <div class="page-header">
-                <h2>How much do you spend on?</h2>
-            </div>
+                <div class="page-header">
+                  <h1>Class Calculator <small>Are you really middle class?</small></h1>
+                </div>
+
+                <h3>To know select how much you spend on?</h3>
+                <p class="bg-primary">(per month per person)</p>
+            </div>          
             <div class="row"><div class=".col-md-2">&nbsp;</div><div class=".col-md-8">
                 
 
                             <div class="table-responsive">
-                                <table class="table table-hover">
+                                <table class="table table-hover"  border=0>
                                 <tr>
                                     <td width="25%">Eating out</td>
                                     <td width="40%"><div length="90%" id="h-slider1" class="primary"></div></td>
-                                    <td width="5%"><input id="h-slider1-amount" value="" readonly style="width:50px;" /></td>
+                                    <td width="1%">₹</td><td width="5%"><input id="h-slider1-amount" value="" readonly style="width:50px;" /></td>
                                     <td width="30%">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td width="25%">Travel (incl. fuel on travel)</td>
                                     <td width="40%"><div length="90%" id="h-slider2" class="primary"></div></td>
-                                    <td width="5%"><input id="h-slider2-amount" value="" readonly style="width:50px;" /></td>
+                                    <td width="1%">₹</td><td width="5%"><input id="h-slider2-amount" value="" readonly style="width:50px;" /></td>
                                     <td width="30%">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td width="25%">Electricity</td>
                                     <td width="40%"><div length="90%" id="h-slider3" class="primary"></div></td>
-                                    <td width="5%"><input id="h-slider3-amount" value="" readonly style="width:50px;" /></td>
+                                    <td width="1%">₹</td><td width="5%"><input id="h-slider3-amount" value="" readonly style="width:50px;" /></td>
                                     <td width="30%">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td width="25%">Alcohol</td>
                                     <td width="40%"><div length="90%" id="h-slider4" class="primary"></div></td>
-                                    <td width="5%"><input id="h-slider4-amount" value="" readonly style="width:50px;" /></td>
+                                    <td width="1%">₹</td><td width="5%"><input id="h-slider4-amount" value="" readonly style="width:50px;" /></td>
                                     <td width="30%">&nbsp;</td>
                                 </tr>                                
                                 <tr>
                                     <td width="25%">Movie Tickets</td>
                                     <td width="40%"><div length="90%" id="h-slider5" class="primary"></div></td>
-                                    <td width="5%"><input id="h-slider5-amount" value="" readonly style="width:50px;" /></td>
+                                    <td width="1%">₹</td><td width="5%"><input id="h-slider5-amount" value="" readonly style="width:50px;" /></td>
                                     <td width="30%">&nbsp;</td>
                                 </tr>  
                                 <tr>
-                                    <td colspan="3"><center><button type="button" class="btn btn-success">Find out your class</button></center></td><td width="60%">&nbsp;</td>
+                                    <td colspan="4"><center><button onclick="caluculate();" type="button" class="btn btn-success">Find out your class</button></center></td><td width="60%">&nbsp;</td>
                                 </tr>
                                 </table>
                             </div>
@@ -119,10 +124,11 @@
                     
                
             </div>
-            <div class="row" id="results_row">
+            <div class="row" id="results_row" >
                 <section id="results">
                     <div class="page-header">
                             <h2>Results</h2>
+                            <div id="result_text">You are </div>
                     </div>
                 </section>
             </div>
@@ -161,14 +167,16 @@
 <script>
 $('#h-slider1').slider({
     range: false,
-    values: [0, 10000],
+     min: 0,
+    max: 10000,
     slide: function (event, ui){
         $("#h-slider1-amount").val(ui.value);
     } 
 });
 $('#h-slider2').slider({
     range: false,
-    values: [0, 10000],
+     min: 0,
+    max: 10000,
     slide: function (event, ui){
         $("#h-slider2-amount").val(ui.value);
     } 
@@ -176,26 +184,77 @@ $('#h-slider2').slider({
 });
 $('#h-slider3').slider({
     range: false,
-    values: [0, 10000],
+     min: 0,
+    max: 10000,
     slide: function (event, ui){
         $("#h-slider3-amount").val(ui.value);
     } 
 });
 $('#h-slider4').slider({
     range: false,
-    values: [0, 10000],
+     min: 0,
+    max: 10000,
     slide: function (event, ui){
         $("#h-slider4-amount").val(ui.value);
     } 
 });
 $('#h-slider5').slider({
     range: false,
-    values: [0, 10000],
+     min: 0,
+    max: 10000,
     slide: function (event, ui){
         $("#h-slider5-amount").val(ui.value);
     } 
 });
-//$("#h-slider1-amount").val($("#h-slider1").slider("value"));
+
+$("#results_row").hide();
+
+//eating, travel, ecity, alchol
+var majorArray = [[0,305,451,558,2050],[0,80,142,195,522],[0,60,84,99,187],[0,511,560,709,1000],[0,30,40,55,117]];
+
+function whichSection(val, cat){
+    for(i=0; i<5; i++ ){
+        if (i == 0){
+            if (val <= majorArray[cat][i]){
+                return i;                
+            }
+        }
+        else{
+            if (val <= majorArray[cat][i] && val > majorArray[cat][(i-1)]){
+                return i; 
+            }
+        }
+    }
+    return 4;
+
+}
+
+function caluculate(){
+    eating      = whichSection($("#h-slider1-amount").val(), 0);
+    traveling   = whichSection($("#h-slider2-amount").val(), 1);
+    electricity = whichSection($("#h-slider3-amount").val(), 2);
+    alcohol     = whichSection($("#h-slider4-amount").val(), 3);
+    movies      = whichSection($("#h-slider5-amount").val(), 4);
+
+    sum_of_all = eating+traveling+electricity+alcohol+movies;
+    social_class="";
+    if (sum_of_all <=5){
+        social_class="Poor";
+    }else if(sum_of_all <=10){
+        social_class="Lower Middle Class";
+    }else if(sum_of_all <=15){
+        social_class="Middle Class";
+    }else if(sum_of_all <=20){
+        social_class="Well-Off";
+    }else if(sum_of_all > 20){
+        social_class="Super Rich";
+    }
+    //alert(social_class);
+    msg = "You belong to "+social_class;
+    $("#result_text").html(msg);
+    $("#results_row").show();
+}
+
 </script>
 
 </body>
