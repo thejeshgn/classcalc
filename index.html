@@ -190,7 +190,7 @@ $('#h-slider4').slider({
 $('#h-slider5').slider({
     range: false,
      min: 0,
-    max: 10000,
+    max: 2000,
     slide: function (event, ui){
         $("#h-slider5-amount").val(ui.value);
     } 
@@ -205,16 +205,16 @@ function whichSection(val, cat){
     for(i=0; i<5; i++ ){
         if (i == 0){
             if (val <= majorArray[cat][i]){
-                return i;                
+                return i+1;                
             }
         }
         else{
             if (val <= majorArray[cat][i] && val > majorArray[cat][(i-1)]){
-                return i; 
+                return i+1; 
             }
         }
     }
-    return 4;
+    return 5;
 
 }
 function hideMsg(){
@@ -238,10 +238,10 @@ function caluculate(){
         social_class="Middle Class";
     }else if(sum_of_all <=20){
         social_class="Well-Off";
-    }else if(sum_of_all > 20){
+    }else if(sum_of_all <= 25){
         social_class="Super Rich";
     }
-    //alert(social_class);
+    alert(sum_of_all);
     msg = "<h1>You are "+social_class+"</h1>";
     $("#result_text").html(msg);
     $("#results").show("slow");
